@@ -11,7 +11,7 @@ module TrapQueue
     config.generators do |g|
       g.template_engine :haml
       g.test_framework :rspec
-      # g.fixture_replacement :fabrication, :dir => "spec/fabricators
+      g.fixture_replacement :fabrication, :dir => "spec/fabricators"
     end
     
     # Settings in config/environments/* take precedence over those specified here.
