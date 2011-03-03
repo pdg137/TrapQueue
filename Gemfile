@@ -5,4 +5,7 @@ gem "mysql2", "0.2.6"
 gem "devise", "1.1.7"
 gem "haml"
 gem "rails3-generators"
-gem "rspec-rails"
+
+group :test, :development do
+  gem "rspec-rails", "~> 2.4"
+end

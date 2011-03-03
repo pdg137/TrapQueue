@@ -9,8 +9,8 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 module TrapQueue
   class Application < Rails::Application
     config.generators do |g|
-      # g.template_engine :haml
-      # g.test_framework :rspec
+      g.template_engine :haml
+      g.test_framework :rspec
       # g.fixture_replacement :fabrication, :dir => "spec/fabricators
     end
     
