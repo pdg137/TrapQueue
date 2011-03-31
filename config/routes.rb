@@ -4,6 +4,8 @@ TrapQueue::Application.routes.draw do
   devise_for :users
   
   resources :users
+   
+  resources :clients
     
   root :to => "welcome#index"
 end
