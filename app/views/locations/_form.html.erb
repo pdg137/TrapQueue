@@ -1,0 +1,20 @@
+<%= form_for @location do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :addr1 %><br />
+    <%= f.text_field :addr1 %>
+  </p>
+  <p>
+    <%= f.label :addr2 %><br />
+    <%= f.text_field :addr2 %>
+  </p>
+  <p>
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </p>
+  <p>
+    <%= f.label :zip %><br />
+    <%= f.text_field :zip %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

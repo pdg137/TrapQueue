@@ -1,0 +1,24 @@
+<% title "Location" %>
+
+<p>
+  <strong>Addr1:</strong>
+  <%= @location.addr1 %>
+</p>
+<p>
+  <strong>Addr2:</strong>
+  <%= @location.addr2 %>
+</p>
+<p>
+  <strong>Zip:</strong>
+  <%= @location.zip %>
+</p>
+<p>
+  <strong>City:</strong>
+  <%= @location.city %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_location_path(@location) %> |
+  <%= link_to "Destroy", @location, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", locations_path %>
+</p>

@@ -51,7 +51,9 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    mocha (0.9.12)
     mysql2 (0.2.6)
+    nifty-generators (0.4.6)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -103,7 +105,9 @@ DEPENDENCIES
   fabrication
   haml
   haml-rails
+  mocha
   mysql2 (= 0.2.6)
+  nifty-generators
   rails (= 3.0.4)
   rails3-generators
   rspec-rails (~> 2.4)
