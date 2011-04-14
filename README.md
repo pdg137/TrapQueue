@@ -32,3 +32,22 @@
 9. Copy `config/database.yml.example` to `config/database.yml` and edit the settings to fit your setup.
 10. Run `rake db:create` and `rake db:migrate` to setup your database.
 11. Run `rails s` and visit [http://localhost:3000/](http://localhost:3000/) to see if everything's working.
+
+## Pulling Upstream Changes
+
+When new changes are made, you'll have to merge them into your fork.
+
+1. Configure remotes:
+
+        $ git remote add upstream git://github.com/SinCityRuby/TrapQueue.git
+
+2. Pull in upstream changes:
+
+        $ git fetch upstream
+        $ git merge upstream/master
+
+For more detailed information, see the GitHub [fork a repo](http://help.github.com/fork-a-repo/) help page.
+
+## Updating After Changes
+
+Run `bundle`, `rake db:migrate`, and restart your web server.
