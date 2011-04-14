@@ -14,4 +14,5 @@ group :test, :development do
   gem "nifty-generators"
   gem "shoulda-matchers"
 end
+gem "acl9"
 gem "mocha", :group => :test
