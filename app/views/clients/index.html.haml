@@ -2,7 +2,7 @@
 
 Use this form to search for a client by phone number.
 
-=form_tag({:action=>"index"}, {:method => :get}) do
+=form_tag({:action=>"search"}, {:method => :get}) do
   =label_tag :phone_number, "Phone Number"
   =text_field_tag :phone_number
   %br/
@@ -13,14 +13,15 @@ Use this form to search for a client by phone number.
 
 %p= link_to "New Client", new_client_path
 
-%table
-  %tr
-    %th Name
-    %th Phone Number
-  -for client in @clients
+-if @clients
+  %table
     %tr
-      %td= client.name
-      %td= client.phone_number
-      %td= link_to "Show", client
-      %td= link_to "Edit", edit_client_path(client)
-      %td= link_to "Destroy", client, :confirm => 'Are you sure?', :method => :delete
+      %th Name
+      %th Phone Number
+    -for client in @clients
+      %tr
+        %td= client.name
+        %td= client.phone_number
+        -# %td= link_to "Show", client
+        -# %td= link_to "Edit", edit_client_path(client)
+        -# %td= link_to "Destroy", client, :confirm => 'Are you sure?', :method => :delete

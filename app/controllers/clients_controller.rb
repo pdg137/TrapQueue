@@ -9,10 +9,13 @@ class ClientsController < ApplicationController
       format.xml  { render :xml => @clients }
     end
 
-    if params.has_key?(:phone_number) || params.has_key?(:name)
-      test_client = Client.new(name:"Judd Lillestrand", phone_number:"1234")
-      @clients = [test_client]
-    end
+  end
+
+  def search
+    test_client = Client.new(name:"Judd Lillestrand", phone_number:"1234")
+    @clients = [test_client]
+
+    render :index
   end
 
   # GET /clients/1
