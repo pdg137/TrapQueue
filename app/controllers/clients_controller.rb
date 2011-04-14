@@ -2,12 +2,20 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.xml
   def index
-    @clients = Client.all
+    # @clients = Client.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @clients }
     end
+
+  end
+
+  def search
+    test_client = Client.new(name:"Judd Lillestrand", phone_number:"1234")
+    @clients = [test_client]
+
+    render :index
   end
 
   # GET /clients/1
