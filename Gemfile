@@ -11,4 +11,8 @@ group :test, :development do
   gem "fabrication"
   gem "rspec-rails", "~> 2.4"
   gem "shoulda-matchers"
+  gem "nifty-generators"
+end
+gem "mocha", :group => :test
+  gem "shoulda-matchers"
 end
