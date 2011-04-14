@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(:version => 20110331032403) do
     t.string   "phone_number"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "location_id"
   end
 
   create_table "jobs", :force => true do |t|

@@ -13,6 +13,7 @@ group :test, :development do
   gem "shoulda-matchers"
   gem "nifty-generators"
 end
+
 gem "mocha", :group => :test
-  gem "shoulda-matchers"
-end
+gem "shoulda-matchers"
+
