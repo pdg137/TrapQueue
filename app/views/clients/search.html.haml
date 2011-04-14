@@ -1,0 +1,10 @@
+Use this form to search for a client by phone number.
+
+=form_tag({:action=>"search"}, {:method => :get}) do
+  =label_tag :phone_number, "Phone Number"
+  =text_field_tag :phone_number
+  %br/
+  =label_tag :name, "Name"
+  =text_field_tag :name
+  %br/
+  =submit_tag "Search"

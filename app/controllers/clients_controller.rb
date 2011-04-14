@@ -10,6 +10,10 @@ class ClientsController < ApplicationController
     end
   end
 
+  def search
+    
+  end
+
   # GET /clients/1
   # GET /clients/1.xml
   def show

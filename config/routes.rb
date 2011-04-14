@@ -6,8 +6,14 @@ TrapQueue::Application.routes.draw do
   resources :users
    
   resources :clients do
-    resources :jobs
-    resources :locations
+
+    collection do
+      get :search
+    end
+
+    resources :jobs do
+      resources :locations
+    end
   end
     
   root :to => "welcome#index"
