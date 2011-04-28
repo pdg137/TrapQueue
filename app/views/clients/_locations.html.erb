@@ -1,0 +1,25 @@
+<% if @client.locations.blank? %>
+  <p>Currently no locations for this client</p>
+<% else %>
+
+  <% for location in @client.locations %>
+  <div>
+  <p>
+    <strong>Addr1:</strong>
+    <%= location.addr1 %>
+  </p>
+  <p>
+    <strong>Addr2:</strong>
+    <%= location.addr2 %>
+  </p>
+  <p>
+    <strong>Zip:</strong>
+    <%= location.zip %>
+  </p>
+  <p>
+    <strong>City:</strong>
+    <%= location.city %>
+  </p>
+  </div>
+  <% end %>
+<% end %>
