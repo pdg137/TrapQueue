@@ -11,8 +11,8 @@ TrapQueue::Application.routes.draw do
       get :search
     end
 
-    resources :jobs do
-      resources :locations
+    resources :locations do
+      resources :jobs
     end
   end
     

@@ -12,9 +12,10 @@ class LocationsController < ApplicationController
   end
 
   def create
+    @client = Client.find(params[:client_id])
     @location = Location.new(params[:location])
     if @location.save
-      redirect_to @location, :notice => "Successfully created location."
+      redirect_to @client.locations, :notice => "Successfully created location."
     else
       render :action => 'new'
     end

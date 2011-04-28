@@ -6,6 +6,8 @@ gem "devise", "1.1.7"
 gem "haml"
 gem "haml-rails"
 gem "rails3-generators"
+gem "acl9"
+
 
 group :test, :development do
     gem "fabrication"
@@ -14,7 +16,3 @@ group :test, :development do
     gem "nifty-generators"
     gem "mocha"
   end
-end
-gem "acl9"
-gem "mocha", :group => :test
->>>>>>> 99c3636f011df207b2b264a5ee43f05ddc3eb92f
