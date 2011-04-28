@@ -1,0 +1,18 @@
+!!! 5
+%html
+  %head
+    %title= yield(:title) || "TrapQueue"
+    = stylesheet_link_tag :all
+    = javascript_include_tag :defaults
+    = csrf_meta_tag
+  %body
+    %p.login_status
+      - if user_signed_in?
+        Signed in as #{current_user.email}.
+        = link_to "Sign out", destroy_user_session_path
+      - else
+        You are not logged in.
+        = link_to "Sign in", new_user_session_path
+    %p.notice= notice
+    %p.alert= alert
+    = yield
