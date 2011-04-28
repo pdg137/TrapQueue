@@ -20,8 +20,9 @@ Use this form to search for a client by phone number.
       %th Phone Number
     -for client in @clients
       %tr
-        %td= client.name
+        %td= link_to client.name, client_path(client)
         %td= client.phone_number
         -# %td= link_to "Show", client
         -# %td= link_to "Edit", edit_client_path(client)
         -# %td= link_to "Destroy", client, :confirm => 'Are you sure?', :method => :delete
+

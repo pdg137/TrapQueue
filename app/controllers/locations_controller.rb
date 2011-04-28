@@ -13,9 +13,9 @@ class LocationsController < ApplicationController
 
   def create
     @client = Client.find(params[:client_id])
-    @location = Location.new(params[:location])
+    @location = @client.locations.new(params[:location])
     if @location.save
-      redirect_to @client.locations, :notice => "Successfully created location."
+      redirect_to client_path(@client), :notice => "Successfully created location."
     else
       render :action => 'new'
     end
@@ -40,3 +40,4 @@ class LocationsController < ApplicationController
     redirect_to locations_url, :notice => "Successfully destroyed location."
   end
 end
+
