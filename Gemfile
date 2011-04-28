@@ -8,11 +8,10 @@ gem "haml-rails"
 gem "rails3-generators"
 gem "acl9"
 
-
 group :test, :development do
-    gem "fabrication"
-    gem "rspec-rails", "~> 2.4"
-    gem "shoulda-matchers"
-    gem "nifty-generators"
-    gem "mocha"
-  end
+  gem "fabrication"
+  gem "rspec-rails", "~> 2.4"
+  gem "shoulda-matchers"
+  gem "nifty-generators"
+  gem "mocha"
+end
