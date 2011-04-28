@@ -7,6 +7,7 @@ gem "haml"
 gem "haml-rails"
 gem "rails3-generators"
 gem "acl9"
+gem "jquery-rails"
 
 group :test, :development do
   gem "fabrication"

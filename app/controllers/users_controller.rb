@@ -22,6 +22,13 @@ class UsersController < ApplicationController
   end
   
   def update
+    @user = User.find(params[:id])
+    if params[:checked] == "1"
+      @user.has_role!(params[:role])
+    else
+      @user.has_no_role!(params[:role])
+    end
+    render :nothing => true
   end
   
   def destroy
