@@ -1,6 +1,30 @@
 %h1 Users
 
-=@users.each do |user|
-  .user
-    Email:
-    #{user.email}
+%table
+  %tr
+    %th{:colspan=>1}
+      Details
+    %th{:colspan=>Role.all_role_names.size}
+      Roles
+  %tr
+    %th
+      Email
+    -Role.all_role_names.each do |name|
+      %th
+        =name
+  -@users.each do |user|
+    %tr
+      %td
+        #{user.email}
+      -Role.all_role_names.each do |name|
+        %td
+          =check_box_tag "roles[#{user.id}][#{name}]","1", user.has_role?(name)
+        :javascript
+          $(function($) {
+              $("#roles_#{user.id}_#{name}").change(function() {
+                  $.ajax({url: '#{url_for :controller=>:users, :action => :update, :id =>user.id}',
+                  type: 'put',
+                  data: {checked: this.checked, role:"#{name}"},
+                  dataType: 'script'})
+              });
+          });

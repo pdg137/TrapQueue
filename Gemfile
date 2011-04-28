@@ -6,6 +6,7 @@ gem "devise", "1.1.7"
 gem "haml"
 gem "haml-rails"
 gem "rails3-generators"
+gem "jquery-rails"
 
 group :test, :development do
   gem "fabrication"
