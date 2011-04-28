@@ -1,8 +1,6 @@
 class WelcomeController < ApplicationController
   access_control do
-    allow :admin
-    allow :manager
-    allow :coordinator
+    allow anonymous, logged_in
   end
 
   def index
