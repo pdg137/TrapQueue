@@ -12,8 +12,13 @@ class ClientsController < ApplicationController
   end
 
   def search
-    test_client = Client.new(name:"Judd Lillestrand", phone_number:"1234")
-    @clients = [test_client]
+    if !params[:phone_number].blank?
+      # Search for clients by phone number.
+      @clients = Client.find_all_by_phone_number(params[:phone_number].gsub(/[^0-9]/,''))
+    else
+      # Search for clients by Name
+      @clients = Client.find(:all, :conditions=>["name like ?", "%"+params[:name]+"%"])
+    end
 
     render :index
   end
