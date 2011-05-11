@@ -9,7 +9,7 @@ gem "rails3-generators"
 gem "acl9"
 gem "jquery-rails"
 
-group :test, :development do
+group :test do
   gem "fabrication"
   gem "rspec-rails", "~> 2.4"
   gem "shoulda-matchers"
