@@ -39,6 +39,7 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     fabrication (0.9.5)
+    googlecharts (1.6.3)
     haml (3.0.25)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
@@ -110,6 +111,7 @@ DEPENDENCIES
   acl9
   devise (= 1.1.7)
   fabrication
+  googlecharts
   haml
   haml-rails
   jquery-rails

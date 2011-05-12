@@ -1,0 +1,2 @@
+=@jobs.collect {|j| j.number_of_cats - j.actual_number_of_cats}.inspect
+%img{src: Gchart.bar(:size => '300x300', :title => "Cat overreporting", :bg => 'efefef', :legend => ['Number of cats'], :data => @jobs.collect {|j| j.number_of_cats - j.actual_number_of_cats},:axis_with_labels=>'y')}
