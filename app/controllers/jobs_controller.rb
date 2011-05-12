@@ -2,7 +2,12 @@ class JobsController < ApplicationController
   respond_to :csv, :only => :index
 
   def index
-    respond_with(@jobs = Job.all)
+    respond_with(@jobs = Job.available)
+  end
+
+  def archived
+    @jobs = Job.find(:all, :conditions => { :status => 'archived' })
+    render :index
   end
 
   def show

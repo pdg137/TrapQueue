@@ -2,10 +2,11 @@ TrapQueue::Application.routes.draw do
   resources :jobs do
     collection do
       get :graphs
+      get :archived
     end
   end
 
-#  resources :locations # locations are related only to clients dhf 4/13/2011
+  #  resources :locations # locations are related only to clients dhf 4/13/2011
 
   devise_for :users
 
@@ -21,8 +22,6 @@ TrapQueue::Application.routes.draw do
     end
   end
 
-  resources :jobs
 
   root :to => "welcome#index"
 end
-

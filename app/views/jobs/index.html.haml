@@ -1,2 +1,14 @@
-%h1 Jobs#index
-%p Find me in app/views/jobs/index.html.haml
+%h1 Jobs
+
+.right= link_to "Archived", archived_jobs_path
+
+%table
+  %tr.header
+    %td ID
+    %td Address
+    %td City
+    %td Zip
+    %td Cats
+
+
+  =render @jobs
