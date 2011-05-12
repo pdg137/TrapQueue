@@ -8,6 +8,7 @@ gem "haml-rails"
 gem "rails3-generators"
 gem "acl9"
 gem "jquery-rails"
+gem "to-csv"
 
 group :test do
   gem "fabrication"
