@@ -18,3 +18,7 @@ group :test do
   gem "nifty-generators"
   gem "mocha"
 end
+
+group :test, :development do
+  gem "faker"
+end
