@@ -1,7 +1,7 @@
 TrapQueue::Application.routes.draw do
   resources :jobs do
     collection do
-      get 'archived'
+      get "archived"
     end
   end
 
@@ -21,7 +21,6 @@ TrapQueue::Application.routes.draw do
     end
   end
 
-  resources :jobs
 
   root :to => "welcome#index"
 end

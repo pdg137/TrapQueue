@@ -1,10 +1,11 @@
 class JobsController < ApplicationController
   def index
-    @jobs = Job.all
+    @jobs = Job.available
   end
 
   def archived
     @jobs = Job.find(:all, :conditions => { :status => 'archived' })
+    render :index
   end
 
   def show

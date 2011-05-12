@@ -17,6 +17,10 @@ tr.header td {
   background: green;
 }
 
-.in-progress {
+.in_progress {
   background: orange;
+}
+
+.archived {
+	background: gray;
 }
