@@ -8,26 +8,12 @@
   <strong>Phone Number:</strong>
   <%= @client.phone_number %>
 </p>
-<% for location in @client.locations %>
-  <div>
+
 <p>
-  <strong>Addr1:</strong>
-  <%= location.addr1 %>
+  <%= link_to 'Add Location', new_client_location_path(@client) %>
 </p>
-<p>
-  <strong>Addr2:</strong>
-  <%= location.addr2 %>
-</p>
-<p>
-  <strong>Zip:</strong>
-  <%= location.zip %>
-</p>
-<p>
-  <strong>City:</strong>
-  <%= location.city %>
-</p>
-  </div>
-<% end %>
+
+<%= render 'locations'%>
 
 <p>
   <%= link_to "Edit", edit_client_path(@client) %> |

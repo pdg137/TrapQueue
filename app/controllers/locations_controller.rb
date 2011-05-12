@@ -1,4 +1,10 @@
 class LocationsController < ApplicationController
+  access_control do
+    allow :admin
+    allow :manager
+    allow :coordinator
+  end
+
   def index
     @locations = Location.all
   end
@@ -12,9 +18,10 @@ class LocationsController < ApplicationController
   end
 
   def create
-    @location = Location.new(params[:location])
+    @client = Client.find(params[:client_id])
+    @location = @client.locations.new(params[:location])
     if @location.save
-      redirect_to @location, :notice => "Successfully created location."
+      redirect_to client_path(@client), :notice => "Successfully created location."
     else
       render :action => 'new'
     end
@@ -39,3 +46,4 @@ class LocationsController < ApplicationController
     redirect_to locations_url, :notice => "Successfully destroyed location."
   end
 end
+

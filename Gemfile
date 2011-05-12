@@ -6,13 +6,13 @@ gem "devise", "1.1.7"
 gem "haml"
 gem "haml-rails"
 gem "rails3-generators"
+gem "acl9"
+gem "jquery-rails"
 
-group :test, :development do
+group :test do
   gem "fabrication"
   gem "rspec-rails", "~> 2.4"
   gem "shoulda-matchers"
   gem "nifty-generators"
-  gem "shoulda-matchers"
+  gem "mocha"
 end
-gem "acl9"
-gem "mocha", :group => :test
