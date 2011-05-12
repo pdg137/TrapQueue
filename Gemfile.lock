@@ -2,6 +2,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     abstract (1.0.0)
+    acl9 (0.12.0)
     actionmailer (3.0.4)
       actionpack (= 3.0.4)
       mail (~> 2.2.15)
@@ -51,6 +52,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    mocha (0.9.12)
     mysql2 (0.2.6)
     nifty-generators (0.4.6)
     polyglot (0.3.1)
@@ -100,10 +102,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acl9
   devise (= 1.1.7)
   fabrication
   haml
   haml-rails
+  mocha
   mysql2 (= 0.2.6)
   nifty-generators
   rails (= 3.0.4)

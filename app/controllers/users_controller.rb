@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
+  access_control do
+    allow :admin
+  end
+
   before_filter :authenticate_user
-  
+
   def index
+    @users = User.find(:all)
   end
   
   def show

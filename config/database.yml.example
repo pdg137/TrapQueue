@@ -1,0 +1,14 @@
+development:
+  adapter: mysql2
+  database: trapqueue_dev
+  username: trapqueue
+
+test:
+  adapter: mysql2
+  database: trapqueue_test
+  username: trapqueue
+
+production:
+  adapter: mysql2
+  database: trapqueue_production
+  username: trapqueue
