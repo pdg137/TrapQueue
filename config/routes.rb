@@ -1,15 +1,9 @@
 TrapQueue::Application.routes.draw do
-  get "jobs/index"
-
-  get "jobs/show"
-
-  get "jobs/new"
-
-  get "jobs/create"
-
-  get "jobs/edit"
-
-  get "jobs/destroy"
+  resources :jobs do
+    collection do
+      get :graphs
+    end
+  end
 
 #  resources :locations # locations are related only to clients dhf 4/13/2011
 

@@ -21,4 +21,8 @@ class JobsController < ApplicationController
   def destroy
   end
 
+  def graphs
+    @jobs = Job.all
+  end
+
 end
