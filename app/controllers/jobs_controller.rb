@@ -1,8 +1,9 @@
 class JobsController < ApplicationController
   respond_to :csv, :only => :index
+  respond_to :html
 
   def index
-    respond_with(@jobs = Job.available)
+    respond_with(@jobs = Job.all)
   end
 
   def archived

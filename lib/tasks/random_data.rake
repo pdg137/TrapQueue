@@ -53,7 +53,7 @@ def random_data
       Job.create!( {
         :number_of_cats => ncats,
         :actual_number_of_cats => rand(ncats),
-        :status => "done",
+        :status => ["open", "closed", "in_progress", "followup","archived"].sample,
         :created_at => creation_date,
         :updated_at => creation_date,
         :location => location
