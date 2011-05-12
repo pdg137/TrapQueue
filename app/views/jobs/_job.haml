@@ -1,6 +1,29 @@
-%tr
-  %td=job.id
-  %td=job.location.addr1 + " " + job.location.addr2
-  %td=job.location.city
-  %td=job.location.zip
-  %td=job.number_of_cats
+- case job.status
+  - when 'open'
+    %tr.open
+      %td.center=job.id
+      %td=link_to "#{job.location.addr1} #{job.location.addr2}", job
+      %td.center=job.location.city
+      %td.center=job.location.zip
+      %td.center=job.number_of_cats
+  - when 'closed'
+    %tr.closed
+      %td.center=job.id
+      %td=link_to "#{job.location.addr1} #{job.location.addr2}", job
+      %td.center=job.location.city
+      %td.center=job.location.zip
+      %td.center=job.number_of_cats
+  - when 'followup'
+    %tr.followup
+      %td.center=job.id
+      %td=link_to "#{job.location.addr1} #{job.location.addr2}", job
+      %td.center=job.location.city
+      %td.center=job.location.zip
+      %td.center=job.number_of_cats
+  - when 'in_progress'
+    %tr.in-progress
+      %td.center=job.id
+      %td=link_to "#{job.location.addr1} #{job.location.addr2}", job
+      %td.center=job.location.city
+      %td.center=job.location.zip
+      %td.center=job.number_of_cats

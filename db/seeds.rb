@@ -10,9 +10,14 @@ location = Location.create!(:addr1 => '1313 Mockingbird Lane', :addr2 => 'Apt. 3
   :city => 'Henderson', :zip => '89074', :name => 'Henry Munster',
   :phone_number => '702-333-2222' )
 
-job = Job.create!(:number_of_cats => 333, :location => location, :status => 'open')
+Job.create!(:number_of_cats => 333, :location => location, :status => 'open')
+Job.create!(:number_of_cats => 1, :actual_number_of_cats => 666, :status => 'in_progress', :location => location)
+Job.create!(:number_of_cats => 333, :location => location, :status => 'followup')
+Job.create!(:number_of_cats => 333, :location => location, :status => 'closed')
+Job.create!(:number_of_cats => 333, :location => location, :status => 'archived')
+Job.create!(:number_of_cats => 333, :location => location, :status => 'open')
+Job.create!(:number_of_cats => 333, :location => location, :status => 'open')
 
 Client.create!(:name=>"Jane Doe", :phone_number=>"7021231111")
 Client.create!(:name=>"Gabe Ross", :phone_number=>"7021232222")
 Client.create!(:name=>"Paul Garrison", :phone_number=>"7021236666")
-

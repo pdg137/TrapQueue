@@ -1,0 +1,22 @@
+tr.header td {
+  font-weight: bold;
+  text-align: center;
+  padding: 0 15px;
+}
+
+.center {
+  text-align: center;
+}
+
+.followup {
+  background: red;
+  color: #fff;
+}
+
+.open {
+  background: green;
+}
+
+.in-progress {
+  background: orange;
+}
