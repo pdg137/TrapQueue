@@ -3,6 +3,10 @@ class JobsController < ApplicationController
     @jobs = Job.all
   end
 
+  def archived
+    @jobs = Job.find(:all, :conditions => { :status => 'archived' })
+  end
+
   def show
     @job = Job.find(params[:id])
   end

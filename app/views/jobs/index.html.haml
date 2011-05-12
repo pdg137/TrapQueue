@@ -1,12 +1,14 @@
 %h1 Jobs
 
+.right= link_to "Archived", jobs_archived_path
+
 %table
-  %tr
+  %tr.header
     %td ID
     %td Address
     %td City
     %td Zip
     %td Cats
-    
-    
+
+
   =render @jobs
