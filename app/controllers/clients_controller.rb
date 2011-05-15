@@ -1,12 +1,4 @@
 class ClientsController < ApplicationController
-  # access_control do
-  #   allow :admin
-  #   allow :manager
-  #   allow :coordinator
-  # end
-
-  # GET /clients
-  # GET /clients.xml
   def index
     # @clients = Client.all
 

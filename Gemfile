@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "acl9"
+gem "cancan"
 gem "devise", "1.1.7"
 gem "googlecharts", :require => "gchart"
 gem "haml"
