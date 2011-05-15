@@ -1,24 +1,21 @@
 source "http://rubygems.org"
 
-gem "rails", "3.0.4"
-gem "mysql2", "0.2.6"
+gem "acl9"
 gem "devise", "1.1.7"
+gem "googlecharts", :require => "gchart"
 gem "haml"
 gem "haml-rails"
-gem "rails3-generators"
-gem "acl9"
 gem "jquery-rails"
-gem "to-csv", :require=>"to_csv"
-gem "googlecharts", :require=>"gchart"
-
-group :test do
-  gem "fabrication"
-  gem "rspec-rails", "~> 2.4"
-  gem "shoulda-matchers"
-  gem "nifty-generators"
-  gem "mocha"
-end
+gem "mysql2", "0.2.6"
+gem "rails", "3.0.4"
+gem "rails3-generators"
+gem "to-csv", :require => "to_csv"
 
 group :test, :development do
+  gem "fabrication"
   gem "faker"
+  gem "mocha"
+  gem "nifty-generators"
+  gem "rspec-rails", "~> 2.4"
+  gem "shoulda-matchers"
 end
