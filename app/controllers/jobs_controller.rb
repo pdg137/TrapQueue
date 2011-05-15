@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  respond_to :csv, :only => :index
+  respond_to :html, :csv, :only => :index
 
   def index
     respond_with(@jobs = Job.available)
@@ -29,5 +29,4 @@ class JobsController < ApplicationController
   def graphs
     @jobs = Job.all
   end
-
 end

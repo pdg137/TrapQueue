@@ -1,0 +1,14 @@
+embed_assets: on
+
+javascripts:
+  common:
+    - public/javascripts/jquery.min.js
+    - public/javascripts/rails.js
+
+stylesheets:
+  main:
+    - public/stylesheets/reset.css
+    - public/stylesheets/grid.css
+    - public/stylesheets/common.css
+    - public/stylesheets/form.css
+    - public/stylesheets/application.css

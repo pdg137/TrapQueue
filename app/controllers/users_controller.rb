@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  access_control do
-    allow :admin
-  end
+  # access_control do
+  #   allow :admin
+  # end
 
   before_filter :authenticate_user
 
