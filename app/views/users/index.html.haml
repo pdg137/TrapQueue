@@ -1,30 +1,25 @@
-%h1 Users
+/ %h1 Users
 
-%table
+%table.data
   %tr
-    %th{:colspan=>1}
-      Details
-    %th{:colspan=>Role.all_role_names.size}
-      Roles
-  %tr
-    %th
-      Email
-    -Role.all_role_names.each do |name|
-      %th
-        =name
-  -@users.each do |user|
+    %th Email
+    - User.roles.each do |role|
+      %th.text-center= role.titleize
+
+  - @users.each do |user|
     %tr
-      %td
-        #{user.email}
-      -Role.all_role_names.each do |name|
-        %td
-          =check_box_tag "roles[#{user.id}][#{name}]","1", user.has_role?(name)
-        :javascript
-          $(function($) {
-              $("#roles_#{user.id}_#{name}").change(function() {
-                  $.ajax({url: '#{url_for :controller=>:users, :action => :update, :id =>user.id}',
-                  type: 'put',
-                  data: {checked: this.checked, role:"#{name}"},
-                  dataType: 'script'})
-              });
-          });
+      %td= user.email
+      - User.roles.each do |role|
+        - if user.send("is_#{role}?")
+          %td.text-center &#x2713;
+
+
+/ :javascript
+/   $(function($) {
+/       $("#roles_#{user.id}_#{name}").change(function() {
+/           $.ajax({url: '#{url_for :controller=>:users, :action => :update, :id =>user.id}',
+/           type: 'put',
+/           data: {checked: this.checked, role:"#{name}"},
+/           dataType: 'script'})
+/       });
+/   });

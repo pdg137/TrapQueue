@@ -1,24 +1,39 @@
-User.destroy_all
-Location.destroy_all
-Client.destroy_all
-Job.destroy_all
+%w(users locations clients jobs).each do |table|
+  ActiveRecord::Base.connection.execute("TRUNCATE #{table}")
+end
 
-user = User.create!(:email => "user@example.com", :password => "password", :password_confirmation => "password")
-user.confirm!
+puts "Creating Users"
+User.roles.each do |role|
+  user = User.create!(
+    :email => "#{role}@example.com",
+    :password => "password",
+    :password_confirmation => "password")
+  user.send("is_#{role}=", true)
+  user.confirm!
+end
 
-location = Location.create!(:addr1 => '1313 Mockingbird Lane', :addr2 => 'Apt. 3',
-  :city => 'Henderson', :zip => '89074', :name => 'Henry Munster',
-  :phone_number => '702-333-2222' )
+puts "Creating Locations"
+100.times do
+  location = Location.create!(
+    :name => Faker::Company.name,
+    :addr1 => Faker::Address.street_address,
+    :city => Faker::Address.city,
+    :zip => Faker::Address.zip_code,
+    :phone => Faker::PhoneNumber.phone_number)
+end
 
-Job.create!(:number_of_cats => 333, :location => location, :status => 'open')
-Job.create!(:number_of_cats => 1, :actual_number_of_cats => 666, :status => 'in_progress', :location => location)
-Job.create!(:number_of_cats => 333, :location => location, :status => 'followup')
-Job.create!(:number_of_cats => 333, :location => location, :status => 'closed')
-Job.create!(:number_of_cats => 333, :location => location, :status => 'archived')
-Job.create!(:number_of_cats => 333, :location => location, :status => 'open')
-Job.create!(:number_of_cats => 333, :location => location, :status => 'open')
-Job.create!(:number_of_cats=>30, :actual_number_of_cats=>20, :location=>location, :status=>"done", :created_at=>10.days.ago, :updated_at=>5.days.ago)
+puts "Creating Clients"
+100.times do
+  Client.create!(
+    :name => Faker::Name.name,
+    :phone_number => Faker::PhoneNumber.phone_number)
+end
 
-Client.create!(:name=>"Jane Doe", :phone_number=>"7021231111")
-Client.create!(:name=>"Gabe Ross", :phone_number=>"7021232222")
-Client.create!(:name=>"Paul Garrison", :phone_number=>"7021236666")
+puts "Creating Jobs"
+100.times do
+  Job.create!(
+    :number_of_cats => rand(300) + 1,
+    :actual_number_of_cats => rand(300) + 1,
+    :location => Location.find(rand(Location.count) + 1),
+    :status => %w(open followup closed archived in_progress).rand)
+end

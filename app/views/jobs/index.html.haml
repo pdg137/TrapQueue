@@ -1,14 +1,22 @@
-%h1 Jobs
+/ %h1 Jobs
+/ .right= link_to("Archived", archived_jobs_path)
 
-.right= link_to "Archived", archived_jobs_path
+%ul
+  - Job::STATUSES.each do |status|
+    %li= link_to(status.titleize, with_status_jobs_path(status))
 
-%table
+%table.data
   %tr.header
-    %td ID
     %td Address
     %td City
     %td Zip
-    %td Cats
+    %td Status
 
+  - @jobs.each do |job|
+    %tr[job]{ :class => job.status }
+      %td= link_to("#{job.location.addr1} #{job.location.addr2}", job)
+      %td= job.location.city
+      %td= job.location.zip
+      %td= job.status.titleize
 
-  =render @jobs
+= paginate(@jobs)

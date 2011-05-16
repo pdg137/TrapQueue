@@ -75,6 +75,10 @@ p {
 
 table {
   width: 100%; }
+  table.data th {
+    text-align: left; }
+  table.data tr td {
+    padding: 0.25em 0; }
 
 #header {
   padding: 1em 0; }

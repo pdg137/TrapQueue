@@ -2,13 +2,16 @@ class JobsController < ApplicationController
   respond_to :html, :csv, :only => :index
 
   def index
-    respond_with(@jobs = Job.available)
+    params[:status] ||= "open"
+    @jobs = Job.send(params[:status])
+    @jobs = @jobs.page(params[:page]).per(50)
+    respond_with(@jobs)
   end
 
-  def archived
-    @jobs = Job.find(:all, :conditions => { :status => 'archived' })
-    render :index
-  end
+  # def archived
+  #   @jobs = Job.where(:status => "archived").all
+  #   render(:index)
+  # end
 
   def show
     @job = Job.find(params[:id])
