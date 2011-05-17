@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110515184623) do
+ActiveRecord::Schema.define(:version => 20110517161654) do
+
+  create_table "bids", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "job_id"
+    t.string   "workflow_state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "clients", :force => true do |t|
     t.string   "name"
@@ -23,9 +31,9 @@ ActiveRecord::Schema.define(:version => 20110515184623) do
     t.integer  "number_of_cats"
     t.integer  "actual_number_of_cats"
     t.integer  "location_id"
-    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "workflow_state",        :default => "open"
   end
 
   create_table "locations", :force => true do |t|

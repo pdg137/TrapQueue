@@ -1,0 +1,31 @@
+= semantic_form_for(@job) do |f|
+  .section-wrapper.group
+    .grid_3
+      %h2 Job Details
+
+    .grid_9
+      .field
+        = f.label(:location_id)
+        = f.select(:location_id, Location.all.collect { |l| [ l.description, l.id ] }, :include_blank => true)
+
+      .field
+        = f.label(:number_of_cats)
+        = f.text_field(:number_of_cats)
+
+      .field
+        = f.label(:actual_number_of_cats)
+        = f.text_field(:actual_number_of_cats)
+
+  .section-wrapper.group
+    .grid_3
+      %h2 Job Status
+
+    .grid_9
+      .field
+        = f.label(:workflow_state)
+        = f.select(:workflow_state, Job.workflow_spec.states.keys.collect { |s| [ s.to_s.titleize, s.to_s ] })
+
+  .section-wrapper.controls.group
+    .grid_3 &nbsp;
+    .grid_9
+      = f.buttons

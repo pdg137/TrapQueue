@@ -2,6 +2,7 @@ source "http://rubygems.org"
 
 gem "cancan"
 gem "devise", "1.1.7"
+gem "formtastic"
 gem "googlecharts", :require => "gchart"
 gem "haml"
 gem "haml-rails"
@@ -13,6 +14,7 @@ gem "rails", "3.0.4"
 gem "rails3-generators"
 gem "sass"
 gem "to-csv", :require => "to_csv"
+gem "workflow"
 
 group :test, :development do
   gem "fabrication"

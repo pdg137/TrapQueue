@@ -5,10 +5,13 @@ class Location < ActiveRecord::Base
 	validate :validate_unique_location
 
 	def validate_unique_location
-        if changed?
-		    l = Location.where(:addr1 => addr1, :addr2 => addr2, :city => city, :zip => zip).first
-		    errors[:base] << "Address was not unique." unless l.nil?
-        end
+    if changed?
+		  l = Location.where(:addr1 => addr1, :addr2 => addr2, :city => city, :zip => zip).first
+		  errors[:base] << "Address was not unique." unless l.nil?
+    end
 	end
 
+  def description
+    [ client.try(:name), addr1, city ].join(" ")
+  end
 end

@@ -1,9 +1,16 @@
 class Job < ActiveRecord::Base
+  include Workflow
+
   belongs_to :location
 
-  STATUSES = %w(followup open in_progress closed archived)
+  workflow do
+    state :open
+    state :in_progress
+    state :closed
+    state :archived
+  end
 
-  STATUSES.each do |status|
-    scope status.to_sym, where(:status => status)
+  def self.with_state(state)
+    where(:workflow_state => state)
   end
 end

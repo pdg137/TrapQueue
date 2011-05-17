@@ -46,6 +46,10 @@ GEM
     fabrication (0.9.5)
     faker (0.9.5)
       i18n (~> 0.4)
+    formtastic (1.2.3)
+      actionpack (>= 2.3.7)
+      activesupport (>= 2.3.7)
+      i18n (~> 0.4)
     googlecharts (1.6.3)
     haml (3.0.25)
     haml-rails (0.3.4)
@@ -117,6 +121,7 @@ GEM
     tzinfo (0.3.24)
     warden (1.0.3)
       rack (>= 1.0.0)
+    workflow (0.8.0)
     yui-compressor (0.9.6)
       POpen4 (>= 0.1.4)
 
@@ -128,6 +133,7 @@ DEPENDENCIES
   devise (= 1.1.7)
   fabrication
   faker
+  formtastic
   googlecharts
   haml
   haml-rails
@@ -143,3 +149,4 @@ DEPENDENCIES
   sass
   shoulda-matchers
   to-csv
+  workflow

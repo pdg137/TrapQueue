@@ -35,5 +35,5 @@ puts "Creating Jobs"
     :number_of_cats => rand(300) + 1,
     :actual_number_of_cats => rand(300) + 1,
     :location => Location.find(rand(Location.count) + 1),
-    :status => %w(open followup closed archived in_progress).rand)
+    :workflow_state => %w(open followup closed archived in_progress).rand)
 end

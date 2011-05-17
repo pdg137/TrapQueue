@@ -2,8 +2,11 @@
 / .right= link_to("Archived", archived_jobs_path)
 
 %ul
-  - Job::STATUSES.each do |status|
-    %li= link_to(status.titleize, with_status_jobs_path(status))
+  - Job.workflow_spec.states.keys.each do |state|
+    %li= link_to(state.to_s.titleize, with_state_jobs_path(state))
+
+%ul
+  %li= link_to("Create a New Job", new_job_path)
 
 %table.data
   %tr.header
@@ -13,10 +16,10 @@
     %td Status
 
   - @jobs.each do |job|
-    %tr[job]{ :class => job.status }
+    %tr[job]
       %td= link_to("#{job.location.addr1} #{job.location.addr2}", job)
       %td= job.location.city
       %td= job.location.zip
-      %td= job.status.titleize
+      %td= job.workflow_state.titleize
 
 = paginate(@jobs)
