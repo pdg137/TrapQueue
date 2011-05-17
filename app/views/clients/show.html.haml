@@ -1,0 +1,17 @@
+%p
+  %strong Name:
+  = @client.name
+
+%p
+  %strong Phone Number:
+  = @client.phone_number
+
+%p
+  = link_to("Add Location", new_client_location_path(@client))
+
+= render("locations")
+
+%ul
+  %li= link_to("Edit", edit_client_path(@client))
+  %li= link_to("Destroy", @client, :confirm => "Are you sure?", :method => :delete)
+  %li= link_to("View All", clients_path)

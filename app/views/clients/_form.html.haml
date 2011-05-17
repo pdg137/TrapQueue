@@ -1,0 +1,18 @@
+= semantic_form_for(@client) do |f|
+  .section-wrapper.group
+    .grid_3
+      %h2 Client Details
+
+    .grid_9
+      .field
+        = f.label(:name)
+        = f.text_field(:name)
+
+      .field
+        = f.label(:phone_number)
+        = f.text_field(:phone_number)
+    
+  .section-wrapper.controls.group
+    .grid_3 &nbsp;
+    .grid_9
+      = f.buttons
