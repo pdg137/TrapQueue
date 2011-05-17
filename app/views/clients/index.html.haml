@@ -1,17 +1,20 @@
-/ %p Use this form to search for a client by phone number.
-/ %p= link_to "New Client", new_client_path
+.subnav.group
+  .grid_8.alpha
+    = form_tag("/clients", :method => :get) do
+      = label_tag("Search Clients:")
+      = text_field_tag(:query)
+      = submit_tag("Search")
+
+  .grid_4.omega.text-right
+    %ul
+      %li= link_to("Create a New Client", new_client_path, :class => "button")
  
-= form_tag("/clients", :method => :get) do
-  = label_tag("Search")
-  = text_field_tag(:query)
-  = submit_tag("Search")
- 
-- if @clients
-  %table.data
+%table.data
+  %tr
+    %th Name
+    %th Phone Number
+
+  - @clients.each do |client|
     %tr
-      %th Name
-      %th Phone Number
-    - @clients.each do |client|
-      %tr
-        %td= link_to(client.name, client_path(client))
-        %td= client.phone_number
+      %td= link_to(client.name, client_path(client))
+      %td= client.phone_number
