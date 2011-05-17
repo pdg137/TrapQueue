@@ -121,6 +121,22 @@ table {
     padding: 0.5em; }
   #content #flash_messages p.notice {
     background-color: yellow; }
+  #content .subnav {
+    border-bottom: 1px solid #e6e6e6;
+    margin-bottom: 1em;
+    padding-bottom: 1em; }
+    #content .subnav ul {
+      list-style-type: none; }
+      #content .subnav ul li {
+        display: inline-block;
+        margin: 0;
+        padding: 0; }
+      #content .subnav ul:first-child li {
+        margin-left: 0;
+        margin-right: 0.5em; }
+      #content .subnav ul:last-child li {
+        margin-left: 0.5em;
+        margin-right: 0; }
   #content table.featured {
     border-top-left-radius: 5px;
     -moz-border-top-left-radius: 5px;

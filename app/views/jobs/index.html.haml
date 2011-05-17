@@ -1,12 +1,14 @@
-/ %h1 Jobs
-/ .right= link_to("Archived", archived_jobs_path)
+.subnav.group
+  .grid_8.alpha
+    %ul.horizontal
+      %li Filter Jobs by Status:
+      - Job.workflow_spec.states.keys.each do |state|
+        %li= link_to(state.to_s.titleize, with_state_jobs_path(state))
 
-%ul
-  - Job.workflow_spec.states.keys.each do |state|
-    %li= link_to(state.to_s.titleize, with_state_jobs_path(state))
-
-%ul
-  %li= link_to("Create a New Job", new_job_path)
+  .grid_4.omega.text-right
+    %ul.horizontal
+      %li
+        %strong= link_to("Create a New Job", new_job_path, :class => "button")
 
 %table.data
   %tr.header
