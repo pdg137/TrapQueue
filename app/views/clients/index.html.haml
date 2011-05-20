@@ -1,5 +1,6 @@
 .subnav.group
   .grid_8.alpha
+    %h3 Clients
     = form_tag("/clients", :method => :get) do
       = label_tag("Search Clients:")
       = text_field_tag(:query)

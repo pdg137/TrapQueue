@@ -4,6 +4,7 @@ javascripts:
   common:
     - public/javascripts/jquery.min.js
     - public/javascripts/rails.js
+    - public/protovis-3.2/protovis-r3.2.js
 
 stylesheets:
   main:
