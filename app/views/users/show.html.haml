@@ -1,0 +1,6 @@
+%h1= @user.email
+
+%h2 Roles
+%ul
+  - User.roles.each do |role|
+    %li= role.titleize

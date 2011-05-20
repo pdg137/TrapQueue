@@ -1,30 +1,42 @@
 class UsersController < ApplicationController
+  respond_to :html, :json
+
   def index
     @users = User.all
+    respond_with(@users)
   end
   
   def show
+    @user = User.find(params[:id])
+    respond_with(@user)
   end
   
   def new
+    @user = User.new
+    respond_with(@user)
   end
   
   def create
+    @user = User.new
+    respond_with(@user)
   end
   
   def edit
+    @user = User.find(params[:id])
+    respond_with(@user)
   end
   
   def update
-    # @user = User.find(params[:id])
-    # if params[:checked] == "1"
-    #   @user.has_role!(params[:role])
-    # else
-    #   @user.has_no_role!(params[:role])
-    # end
-    # render :nothing => true
+    @user = User.find(params[:id])
+    if @user.update_attributes(params[:user])
+      flash[:notice] = "Successfully updated user."
+    end
+    respond_with(@user)
   end
   
   def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    respond_with(@user)
   end
 end
