@@ -1,7 +1,9 @@
 class Bid < ActiveRecord::Base
   include Workflow
 
-  validates_inclusion_of :status, :in => %w(new accepted declined)
+  belongs_to :user
+
+  validates_inclusion_of :workflow_state, :in => %w(new accepted declined)
 
   workflow do
     state :new

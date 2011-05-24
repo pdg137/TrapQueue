@@ -2,8 +2,9 @@ TrapQueue::Application.routes.draw do
   resources :jobs do
     collection do
       get "state/:state", :action => "index", :as => "with_state"
-      # get :graphs
     end
+
+    resources :bids, :only => [ :create, :destroy ]
   end
 
   devise_for :users

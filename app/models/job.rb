@@ -2,6 +2,7 @@ class Job < ActiveRecord::Base
   include Workflow
 
   belongs_to :location
+  has_many :bids
 
   workflow do
     state :open

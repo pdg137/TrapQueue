@@ -6,9 +6,37 @@
     %ul.horizontal
       - if can?(:update, @job)
         %li= link_to("Edit Job", edit_job_path(@job), :class => "button")
-      %li= link_to("Bid on Job", "#", :class => "button")
 
-%ul
-  %li
-    Number of Cats:
-    %strong= @job.number_of_cats
+.grid_6
+  .info
+    %ul
+      %li
+        Status:
+        %strong= @job.workflow_state.titleize
+
+      %li
+        Number of Cats:
+        %strong= @job.number_of_cats
+
+  %h4 Submitted Bids
+  - unless @job.bids.empty?
+    - @job.bids.each do |bid|
+      .bid
+        = bid.user.email
+        = simple_format(bid.notes)
+  - else
+    %p There are currently no bids for this job.
+
+.grid_6
+  - if @job.workflow_state == "open"
+    = semantic_form_for([ @job, @job.bids.build ]) do |f|
+      .section-wrapper.group
+        %h2 Bid For this Job
+
+        .field
+          = f.label("Notes")
+          = f.text_area(:notes, :rows => 5)
+
+      .section-wrapper.controls.group
+        = f.buttons do
+          = f.commit_button("Submit Your Bid")
