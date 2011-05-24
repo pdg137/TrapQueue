@@ -5,23 +5,26 @@
 
   .grid_8.omega.text-right
     %ul
-      %li= link_to("Edit Client", edit_client_path(@client), :class => "button")
-      %li= link_to("Remove Client", client_path(@client), :class => "button", :confirm => "Are you sure?", :method => :delete)
-      %li= link_to("Add Location", new_client_location_path(@client), :class => "button")
+      - if can?(:manage, Client)
+        %li= link_to("Edit Client", edit_client_path(@client), :class => "button")
+        %li= link_to("Remove Client", client_path(@client), :class => "button", :confirm => "Are you sure?", :method => :delete)
+      - if can?(:manage, Location)
+        %li= link_to("Add Location", new_client_location_path(@client), :class => "button")
 
-- unless @client.locations.empty?
-  %table.data
-    %th Address
-    %th
-    %th City
-    %th Zip
+- if can?(:read, Client)
+  - unless @client.locations.empty?
+    %table.data
+      %th Address
+      %th
+      %th City
+      %th Zip
 
-    - @client.locations.each do |location|
-      %tr
-        %td= location.addr1
-        %td= location.addr2
-        %td= location.city
-        %td= location.zip
+      - @client.locations.each do |location|
+        %tr
+          %td= location.addr1
+          %td= location.addr2
+          %td= location.city
+          %td= location.zip
 
-- else
-  %p There are currently no locations for this client.
+  - else
+    %p There are currently no locations for this client.

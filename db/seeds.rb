@@ -12,21 +12,20 @@ User.roles.each do |role|
   user.confirm!
 end
 
-puts "Creating Locations"
-100.times do
-  location = Location.create!(
-    :name => Faker::Company.name,
-    :addr1 => Faker::Address.street_address,
-    :city => Faker::Address.city,
-    :zip => Faker::Address.zip_code,
-    :phone => Faker::PhoneNumber.phone_number)
-end
-
 puts "Creating Clients"
 100.times do
   Client.create!(
     :name => Faker::Name.name,
     :phone_number => Faker::PhoneNumber.phone_number)
+end
+
+puts "Creating Locations"
+100.times do
+  Location.create!(
+    :client => Client.find(rand(Client.count) + 1),
+    :addr1 => Faker::Address.street_address,
+    :city => Faker::Address.city,
+    :zip => Faker::Address.zip_code)
 end
 
 puts "Creating Jobs"

@@ -1,1 +1,14 @@
-= render("form")
+.subnav.group
+  .grid_8.alpha
+    %h3= @job.location.client.name
+
+  .grid_4.omega.text-right
+    %ul.horizontal
+      - if can?(:update, @job)
+        %li= link_to("Edit Job", edit_job_path(@job), :class => "button")
+      %li= link_to("Bid on Job", "#", :class => "button")
+
+%ul
+  %li
+    Number of Cats:
+    %strong= @job.number_of_cats
