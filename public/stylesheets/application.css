@@ -137,6 +137,8 @@ table {
       #content .subnav ul:last-child li {
         margin-left: 0.5em;
         margin-right: 0; }
+      #content .subnav ul.horizontal li:first-child {
+        margin-left: 0; }
   #content table.featured {
     border-top-left-radius: 5px;
     -moz-border-top-left-radius: 5px;
