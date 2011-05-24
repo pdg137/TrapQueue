@@ -4,6 +4,10 @@ TrapQueue::Application.routes.draw do
       get "state/:state", :action => "index", :as => "with_state"
     end
 
+    member do
+      post "start", :action => "start", :as => "start"
+    end
+
     resources :bids, :only => [ :create, :destroy ]
   end
 

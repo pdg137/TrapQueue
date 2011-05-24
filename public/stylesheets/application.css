@@ -161,6 +161,10 @@ table {
     margin-bottom: 2em; }
   #content .bid {
     margin-bottom: 2em; }
+  #content .trapper_select {
+    margin-bottom: 2em; }
+    #content .trapper_select p {
+      margin: 0; }
   #content .pagination {
     border-top: 1px solid #e6e6e6;
     margin-top: 2em;

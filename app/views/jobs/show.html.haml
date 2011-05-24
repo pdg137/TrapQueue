@@ -19,11 +19,20 @@
         %strong= @job.number_of_cats
 
   %h4 Submitted Bids
+
+  - if can?(:manage, Job)
+    .trapper_select
+      %p Select Trapper for Job
+      = form_tag(start_job_path(@job)) do
+        = select_tag(:bid, options_for_select(@job.bids.uniq { |b| b.user.id }.collect { |b| [ b.user.email, b.id ] }))
+        = submit_tag("Start Job")
+
   - unless @job.bids.empty?
     - @job.bids.each do |bid|
       .bid
         = bid.user.email
         = simple_format(bid.notes)
+
   - else
     %p There are currently no bids for this job.
 

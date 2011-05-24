@@ -38,6 +38,15 @@ class JobsController < ApplicationController
     respond_with(@job)
   end
 
+  def start
+    @job = Job.find(params[:id])
+    @bid = @job.bids.find(params[:bid])
+    @bid.accept
+    @job.start
+    @job.bids.new.each(&:decline)
+    respond_with(@job)
+  end
+
   def destroy
     @job = Job.find(params[:id])
     @job.destroy

@@ -5,9 +5,16 @@ class Job < ActiveRecord::Base
   has_many :bids
 
   workflow do
-    state :open
-    state :in_progress
-    state :closed
+    state :open do
+      event :start, :transitions_to => :in_progress
+    end
+    state :in_progress do
+      event :close, :transitions_to => :closed
+      event :archive, :transitions_to => :archive
+    end
+    state :closed do
+      event :archive, :transitions_to => :archive
+    end
     state :archived
   end
 
