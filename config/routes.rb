@@ -19,5 +19,5 @@ TrapQueue::Application.routes.draw do
     end
   end
 
-  root :to => "welcome#index"
+  root :to => "dashboard#index"
 end
