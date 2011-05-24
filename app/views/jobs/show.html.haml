@@ -20,7 +20,7 @@
 
   %h4 Submitted Bids
 
-  - if can?(:manage, Job)
+  - if can?(:manage, Job) && !@job.bids.empty? && @job.current_state == "open"
     .trapper_select
       %p Select Trapper for Job
       = form_tag(start_job_path(@job)) do

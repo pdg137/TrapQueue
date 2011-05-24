@@ -121,7 +121,6 @@ GEM
     tzinfo (0.3.24)
     warden (1.0.3)
       rack (>= 1.0.0)
-    workflow (0.8.0)
     yui-compressor (0.9.6)
       POpen4 (>= 0.1.4)
 
@@ -149,4 +148,3 @@ DEPENDENCIES
   sass
   shoulda-matchers
   to-csv
-  workflow

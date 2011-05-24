@@ -40,10 +40,9 @@ class JobsController < ApplicationController
 
   def start
     @job = Job.find(params[:id])
-    @bid = @job.bids.find(params[:bid])
-    @bid.accept
-    @job.start
-    @job.bids.new.each(&:decline)
+    @job.bids.find(params[:bid]).accept!
+    @job.start!
+    @job.bids.awaiting.each(&:decline!)
     respond_with(@job)
   end
 

@@ -3,10 +3,8 @@ class Bid < ActiveRecord::Base
 
   belongs_to :user
 
-  validates_inclusion_of :workflow_state, :in => %w(new accepted declined)
-
   workflow do
-    state :new do
+    state :awating do
       event :decline, :transitions_to => :declined
       event :accept, :transitions_to => :accepted
     end
@@ -14,7 +12,7 @@ class Bid < ActiveRecord::Base
     state :accepted
   end
 
-  scope :new, where(:workflow_state => "new")
+  scope :awaiting, where(:workflow_state => "awaiting")
   scope :declined, where(:workflow_state => "declined")
   scope :accepted, where(:workflow_state => "accepted")
 end

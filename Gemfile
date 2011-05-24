@@ -14,7 +14,6 @@ gem "rails", "3.0.4"
 gem "rails3-generators"
 gem "sass"
 gem "to-csv", :require => "to_csv"
-gem "workflow"
 
 group :test, :development do
   gem "fabrication"
