@@ -77,8 +77,19 @@ table {
   width: 100%; }
   table.data th {
     text-align: left; }
+  table.data tr.archived {
+    background: #f4f6ed; }
+  table.data tr.closed {
+    background: #cbeae8; }
+  table.data tr.open {
+    background: #fbdbc1; }
+  table.data tr.in_progress {
+    background: #edfafc; }
+  table.data tr:hover {
+    background: white; }
   table.data tr td {
-    padding: 0.25em 0; }
+    border-bottom: 1px solid #cccccc;
+    padding: 0.35em 1em; }
 
 #header {
   padding: 1em 0; }

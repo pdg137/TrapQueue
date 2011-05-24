@@ -2,8 +2,8 @@ class JobsController < ApplicationController
   respond_to :html, :csv
 
   def index
-    params[:state] ||= "open" # Set default state to show
-    @jobs = Job.with_state(params[:state]).page(params[:page]).per(50)
+    @jobs = (params[:state]) ? Job.with_state(params[:state]) : Job.ordered_by_state
+    @jobs = @jobs.page(params[:page]).per(50)
     respond_with(@jobs)
   end
 

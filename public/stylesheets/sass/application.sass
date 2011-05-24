@@ -37,8 +37,24 @@ table
       text-align: left
 
     tr
+      &.archived
+        background: lighten(#E0E4CC, 10%) 
+        
+      &.closed
+        background: lighten(#A7DBD8, 10%)
+
+      &.open
+        background: lighten(#F38630, 30%)
+
+      &.in_progress
+        background: lighten(#69D2E7, 30%)
+
+      &:hover
+        background: white
+
       td
-        padding: .25em 0
+        border-bottom: 1px solid #CCCCCC
+        padding: .35em 1em
 
 #header
   padding: 1em 0

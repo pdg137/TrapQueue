@@ -19,7 +19,7 @@
     %td Status
 
   - @jobs.each do |job|
-    %tr[job]
+    %tr[job]{ :class => job.workflow_state }
       %td= link_to("#{job.location.addr1} #{job.location.addr2}", job)
       %td= job.location.city
       %td= job.location.zip
