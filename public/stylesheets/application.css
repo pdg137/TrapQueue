@@ -68,7 +68,7 @@ a {
     text-shadow: 0 0 3px #afafaf;
     font-size: 1em; }
     a.button:hover {
-      background: -webkit-gradient(linear, left top, left bottom, from(#6f9b42), to(#476a23)); }
+      background: #476a23; }
 
 p {
   margin-bottom: 0.75em; }
