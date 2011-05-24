@@ -22,7 +22,7 @@
 
     .grid_9
       .field
-        = f.label(:workflow_state)
+        = f.label(:workflow_state, "Status")
         = f.select(:workflow_state, Job.workflow_spec.states.keys.collect { |s| [ s.to_s.titleize, s.to_s ] })
 
   .section-wrapper.controls.group
