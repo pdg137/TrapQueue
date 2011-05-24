@@ -20,7 +20,7 @@
   - @jobs.each do |job|
     %tr[job]{ :class => job.workflow_state }
       %td= link_to(job.location.client.name, job_path(job))
-      %td.text-center= rand(10)
+      %td.text-center= job.bids.count
       %td.text-center= job.number_of_cats
       %td= job.workflow_state.titleize
 
