@@ -17,13 +17,11 @@
 
         .grid_6.text-right
           %ul#navigation
-            %li= link_to("Home", root_path)
-            %li= link_to("Jobs", jobs_path)
-            %li= link_to("Clients", clients_path)
-            %li= link_to("Users", users_path)
-
             - if user_signed_in?
-              / %li== Signed in as #{current_user.email}.
+              %li= link_to("Dashboard", root_path)
+              %li= link_to("Jobs", jobs_path)
+              %li= link_to("Clients", clients_path)
+              %li= link_to("Users", users_path)
               %li= link_to("Sign out", destroy_user_session_path)
             - else
               %li You are not logged in.

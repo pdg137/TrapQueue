@@ -1,0 +1,20 @@
+= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  .section-wrapper.group
+    .grid_12
+      %h2 Please Sign In to Use this Application
+
+      .field
+        = f.label :email
+        = f.text_field :email
+
+      .field
+        = f.label :password
+        = f.password_field :password
+
+  .section-wrapper.controls.group
+    .grid_12
+      = f.submit("Sign in")
+
+      %div
+        %br
+        = render(:partial => "devise/shared/links")
