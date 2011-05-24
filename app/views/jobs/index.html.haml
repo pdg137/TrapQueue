@@ -12,11 +12,11 @@
         %strong= link_to("Create a New Job", new_job_path, :class => "button")
 
 %table.data
-  %tr.header
-    %td Address
-    %td City
-    %td Zip
-    %td Status
+  %tr
+    %th Address
+    %th City
+    %th Zip
+    %th Status
 
   - @jobs.each do |job|
     %tr[job]{ :class => job.workflow_state }

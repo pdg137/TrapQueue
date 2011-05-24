@@ -75,8 +75,6 @@ p {
 
 table {
   width: 100%; }
-  table.data th {
-    text-align: left; }
   table.data tr.archived {
     background: #f4f6ed; }
   table.data tr.closed {
@@ -87,6 +85,11 @@ table {
     background: #edfafc; }
   table.data tr:hover {
     background: white; }
+  table.data tr th {
+    color: gray;
+    font-weight: normal;
+    padding: 0.35em 1em;
+    text-align: left; }
   table.data tr td {
     border-bottom: 1px solid #cccccc;
     padding: 0.35em 1em; }
