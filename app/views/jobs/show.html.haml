@@ -7,6 +7,8 @@
       - if can?(:update, @job)
         %li= link_to("Edit Job", edit_job_path(@job), :class => "button")
 
+= render :partial => "job_map", :locals => {:jobs => [@job]}
+
 .grid_6
   .info
     %ul

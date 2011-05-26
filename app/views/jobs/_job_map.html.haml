@@ -1,0 +1,12 @@
+-# expects local variable jobs
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=ABQIAAAAzl2YMVe44HFSsnfewgirnRTFx0WbLStG4IsLghOI9giaQqI8XxQJ56JP1k_llYi0Q3pNnb294QRmgw" type="text/javascript"></script>
+- jobs_json = (jobs.collect {|job| [job.location.latitude,job.location.longitude]}).to_json
+<div id="map_canvas" style="width: 500px; height: 300px"></div>
+:javascript
+  mapInit("map_canvas")
+  jobs = #{jobs_json}
+  for(var i=0;i<jobs.length;i++)
+  {
+    mapAddJob(jobs[i][0],jobs[i][1])
+  }
+
