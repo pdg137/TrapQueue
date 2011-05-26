@@ -4,6 +4,7 @@ class JobsController < ApplicationController
   def index
     @jobs = (params[:state]) ? Job.with_state(params[:state]) : Job.ordered_by_state
     @jobs = @jobs.page(params[:page]).per(50)
+    @jobs = @jobs.joins(:location)
     respond_with(@jobs)
   end
 
