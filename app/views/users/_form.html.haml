@@ -1,0 +1,31 @@
+= semantic_form_for(@user) do |f|
+  .section-wrapper.group
+    .grid_3
+      %h2 User Details
+
+    .grid_9
+      .field
+        = f.label(:email)
+        = f.text_field(:email)
+
+      - if @user.new_record?
+        .field
+          = f.label(:password)
+          = f.text_field(:password)
+
+        .field
+          = f.label(:password_confirmation)
+          = f.text_field(:password_confirmation)
+
+  .section-wrapper.group
+    .grid_3
+      %h2 User Roles
+
+    .grid_9
+      .field
+        = f.input(:roles, :as => :check_boxes, :collection => User.roles.collect { |r| [ r.titleize, r ] }, :label => false)
+
+  .section-wrapper.controls.group
+    .grid_3 &nbsp;
+    .grid_9
+      = f.buttons

@@ -1,19 +1,21 @@
 TrapQueue::Application.routes.draw do
   resources :jobs do
     collection do
-      get :graphs
-      get :archived
+      get "state/:state", :action => "index", :as => "with_state"
     end
-  end
 
-  #  resources :locations # locations are related only to clients dhf 4/13/2011
+    member do
+      post "start", :action => "start", :as => "start"
+    end
+
+    resources :bids, :only => [ :create, :destroy ]
+  end
 
   devise_for :users
 
   resources :users
 
   resources :clients do
-
     collection do
       get :search
     end
@@ -22,6 +24,5 @@ TrapQueue::Application.routes.draw do
     end
   end
 
-
-  root :to => "welcome#index"
+  root :to => "dashboard#index"
 end

@@ -1,9 +1,23 @@
 class User < ActiveRecord::Base
+  has_many :bids
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :token_authenticatable, :confirmable, :lockable, :timeoutable
 
-  acts_as_authorization_subject :association_name => :roles
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :roles
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  def self.roles
+    %w(admin coordinator manager trapper)
+  end
+
+  def roles
+    User.roles.collect { |r| r if self.send("is_#{r}?") }.compact
+  end
+
+  def roles=(roles)
+    roles.select! { |r| !r.blank? }
+    User.roles.each { |r| self.send("is_#{r}=", false) }
+    roles.each { |r| self.send("is_#{r}=", true) }
+  end
 end

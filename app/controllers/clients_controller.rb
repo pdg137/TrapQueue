@@ -1,102 +1,47 @@
 class ClientsController < ApplicationController
-  access_control do
-    allow :admin
-    allow :manager
-    allow :coordinator
-  end
+  respond_to :html
 
-  # GET /clients
-  # GET /clients.xml
   def index
-    # @clients = Client.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @clients }
-    end
-
+    @clients = Client
+    @clients = @clients.search(params[:query]) if params[:query] 
+    @clients = @clients.page(params[:page]).per(50)
+    respond_with(@clients)
   end
 
-  def search
-    if !params[:phone_number].blank?
-      # Search for clients by phone number.
-      @clients = Client.find_all_by_phone_number(params[:phone_number].gsub(/[^0-9]/,''))
-    else
-      # Search for clients by Name
-      @clients = Client.find(:all, :conditions=>["name like ?", "%"+params[:name]+"%"])
-    end
-
-    render :index
-  end
-
-  # GET /clients/1
-  # GET /clients/1.xml
   def show
     @client = Client.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @client }
-    end
+    respond_with(@client)
   end
 
-  # GET /clients/new
-  # GET /clients/new.xml
   def new
     @client = Client.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @client }
-    end
+    respond_with(@client)
   end
 
-  # GET /clients/1/edit
   def edit
     @client = Client.find(params[:id])
+    respond_with(@client)
   end
 
-  # POST /clients
-  # POST /clients.xml
   def create
     @client = Client.new(params[:client])
-
-    respond_to do |format|
-      if @client.save
-        format.html { redirect_to(@client, :notice => 'Client was successfully created.') }
-        format.xml  { render :xml => @client, :status => :created, :location => @client }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @client.errors, :status => :unprocessable_entity }
-      end
-    end
+    @client.save!
+    redirect_to(@client, :notice => "Client was successfully created.")
+  rescue ActiveRecord::RecordInvalid
+    render(:new)
   end
 
-  # PUT /clients/1
-  # PUT /clients/1.xml
   def update
     @client = Client.find(params[:id])
-
-    respond_to do |format|
-      if @client.update_attributes(params[:client])
-        format.html { redirect_to(@client, :notice => 'Client was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @client.errors, :status => :unprocessable_entity }
-      end
-    end
+    @client.update_attributes!(params[:client])
+    redirect_to(@client, :notice => "Client was successfully updated.")
+  rescue ActiveRecord::RecordInvalid
+    render(:edit)
   end
 
-  # DELETE /clients/1
-  # DELETE /clients/1.xml
   def destroy
     @client = Client.find(params[:id])
     @client.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(clients_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to(clients_path)
   end
 end

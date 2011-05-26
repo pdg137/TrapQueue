@@ -1,0 +1,30 @@
+.subnav.group
+  .grid_4.alpha
+    %h3= @client.name
+    %p= @client.phone_number
+
+  .grid_8.omega.text-right
+    %ul
+      - if can?(:manage, Client)
+        %li= link_to("Edit Client", edit_client_path(@client), :class => "button")
+        %li= link_to("Remove Client", client_path(@client), :class => "button", :confirm => "Are you sure?", :method => :delete)
+      - if can?(:manage, Location)
+        %li= link_to("Add Location", new_client_location_path(@client), :class => "button")
+
+- if can?(:read, Client)
+  - unless @client.locations.empty?
+    %table.data
+      %th Address
+      %th
+      %th City
+      %th Zip
+
+      - @client.locations.each do |location|
+        %tr
+          %td= location.addr1
+          %td= location.addr2
+          %td= location.city
+          %td= location.zip
+
+  - else
+    %p There are currently no locations for this client.

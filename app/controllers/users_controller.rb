@@ -1,44 +1,42 @@
 class UsersController < ApplicationController
-  access_control do
-    allow :admin
-  end
-
-  before_filter :authenticate_user
+  respond_to :html, :json
 
   def index
-    @users = User.find(:all)
+    @users = User.all
+    respond_with(@users)
   end
   
   def show
+    @user = User.find(params[:id])
+    respond_with(@user)
   end
   
   def new
+    @user = User.new
+    respond_with(@user)
   end
   
   def create
+    @user = User.new
+    respond_with(@user)
   end
   
   def edit
+    @user = User.find(params[:id])
+    respond_with(@user)
   end
   
   def update
     @user = User.find(params[:id])
-    if params[:checked] == "1"
-      @user.has_role!(params[:role])
-    else
-      @user.has_no_role!(params[:role])
+    if @user.update_attributes(params[:user])
+      flash[:notice] = "Successfully updated user."
     end
-    render :nothing => true
+    respond_with(@user)
   end
   
   def destroy
-  end
-  
-protected
-
-  def authenticate_user
-    unless current_user
-      redirect_to(new_user_session_path)
-    end
+    @user = User.find(params[:id])
+    @user.destroy
+    respond_with(@user)
   end
 end

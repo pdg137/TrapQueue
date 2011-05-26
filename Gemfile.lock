@@ -1,8 +1,11 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    POpen4 (0.1.4)
+      Platform (>= 0.4.0)
+      open4
+    Platform (0.4.0)
     abstract (1.0.0)
-    acl9 (0.12.0)
     actionmailer (3.0.4)
       actionpack (= 3.0.4)
       mail (~> 2.2.15)
@@ -32,6 +35,8 @@ GEM
     arel (2.0.9)
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
+    cancan (1.6.4)
+    closure-compiler (1.1.1)
     devise (1.1.7)
       bcrypt-ruby (~> 2.1.2)
       warden (~> 1.0.2)
@@ -41,6 +46,10 @@ GEM
     fabrication (0.9.5)
     faker (0.9.5)
       i18n (~> 0.4)
+    formtastic (1.2.3)
+      actionpack (>= 2.3.7)
+      activesupport (>= 2.3.7)
+      i18n (~> 0.4)
     googlecharts (1.6.3)
     haml (3.0.25)
     haml-rails (0.3.4)
@@ -49,9 +58,14 @@ GEM
       haml (~> 3.0)
       railties (~> 3.0)
     i18n (0.5.0)
+    jammit (0.6.0)
+      closure-compiler (>= 0.1.0)
+      yui-compressor (>= 0.9.1)
     jquery-rails (0.2.7)
       rails (~> 3.0)
       thor (~> 0.14.4)
+    kaminari (0.12.4)
+      rails (>= 3.0.0)
     mail (2.2.15)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -61,6 +75,7 @@ GEM
     mocha (0.9.12)
     mysql2 (0.2.6)
     nifty-generators (0.4.6)
+    open4 (1.0.1)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -96,6 +111,7 @@ GEM
       activesupport (~> 3.0)
       railties (~> 3.0)
       rspec (~> 2.5.0)
+    sass (3.1.1)
     shoulda-matchers (1.0.0.beta1)
     thor (0.14.6)
     to-csv (1.0.3)
@@ -105,24 +121,30 @@ GEM
     tzinfo (0.3.24)
     warden (1.0.3)
       rack (>= 1.0.0)
+    yui-compressor (0.9.6)
+      POpen4 (>= 0.1.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  acl9
+  cancan
   devise (= 1.1.7)
   fabrication
   faker
+  formtastic
   googlecharts
   haml
   haml-rails
+  jammit
   jquery-rails
+  kaminari
   mocha
   mysql2 (= 0.2.6)
   nifty-generators
   rails (= 3.0.4)
   rails3-generators
   rspec-rails (~> 2.4)
+  sass
   shoulda-matchers
   to-csv

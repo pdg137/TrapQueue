@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110414021110) do
+ActiveRecord::Schema.define(:version => 20110525221704) do
+
+  create_table "bids", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "job_id"
+    t.string   "workflow_state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "notes"
+  end
 
   create_table "clients", :force => true do |t|
     t.string   "name"
@@ -23,9 +32,10 @@ ActiveRecord::Schema.define(:version => 20110414021110) do
     t.integer  "number_of_cats"
     t.integer  "actual_number_of_cats"
     t.integer  "location_id"
-    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "workflow_state",        :default => "open"
+    t.text     "notes"
   end
 
   create_table "locations", :force => true do |t|
@@ -38,25 +48,10 @@ ActiveRecord::Schema.define(:version => 20110414021110) do
     t.integer  "client_id"
   end
 
-  create_table "roles", :force => true do |t|
-    t.string   "name",              :limit => 40
-    t.string   "authorizable_type", :limit => 40
-    t.integer  "authorizable_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "roles_users", :id => false, :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "role_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", :force => true do |t|
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
+    t.string   "email",                               :default => "",    :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "",    :null => false
+    t.string   "password_salt",                       :default => "",    :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
@@ -74,6 +69,10 @@ ActiveRecord::Schema.define(:version => 20110414021110) do
     t.string   "authentication_token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_admin",                            :default => false
+    t.boolean  "is_coordinator",                      :default => false
+    t.boolean  "is_manager",                          :default => false
+    t.boolean  "is_trapper",                          :default => false
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

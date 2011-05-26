@@ -1,0 +1,25 @@
+= semantic_form_for([ :client, @location ]) do |f|
+  .section-wrapper.group
+    .grid_3
+      %h2 Location Details
+
+    .grid_9
+      .field
+        = f.label(:addr1, "Address")
+        = f.text_field(:addr1)
+
+      .field
+        = f.text_field(:addr2)
+
+      .field
+        = f.label(:city)
+        = f.text_field(:city)
+
+      .field
+        = f.label(:zip)
+        = f.text_field(:zip)
+
+  .section-wrapper.controls.group
+    .grid_3 &nbsp;
+    .grid_9
+      = f.buttons

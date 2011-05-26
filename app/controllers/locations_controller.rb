@@ -1,10 +1,4 @@
 class LocationsController < ApplicationController
-  access_control do
-    allow :admin
-    allow :manager
-    allow :coordinator
-  end
-
   def index
     @locations = Location.all
   end

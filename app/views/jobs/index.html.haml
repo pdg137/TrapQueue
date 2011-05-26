@@ -1,14 +1,27 @@
-%h1 Jobs
+.subnav.group
+  .grid_8.alpha
+    %h3 Jobs
+    %ul.horizontal
+      %li Filter Jobs by Status:
+      - Job.workflow_spec.states.keys.each do |state|
+        %li= link_to(state.to_s.titleize, with_state_jobs_path(state))
 
-.right= link_to "Archived", archived_jobs_path
+  .grid_4.omega.text-right
+    %ul.horizontal
+      %li= link_to("Create a New Job", new_job_path, :class => "button")
 
-%table
-  %tr.header
-    %td ID
-    %td Address
-    %td City
-    %td Zip
-    %td Cats
+%table.data
+  %tr
+    %th Client
+    %th.text-center Number of Bids
+    %th.text-center Number of Reported Cats
+    %th Status
 
+  - @jobs.each do |job|
+    %tr[job]{ :class => job.workflow_state }
+      %td= link_to(job.location.client.name, job_path(job))
+      %td.text-center= job.bids.count
+      %td.text-center= job.number_of_cats
+      %td= job.workflow_state.titleize
 
-  =render @jobs
+= paginate(@jobs)
